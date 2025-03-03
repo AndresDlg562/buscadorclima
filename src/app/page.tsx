@@ -22,7 +22,7 @@ export default function Home() {
   const [searchCity, setSearchCity] = useState("");
   const [weatherCards, setWeatherCards] = useState<WeatherData[]>([]);
   const [error, setError] = useState("");
-  const apiKey = "";
+  const apiKey = "47dfaef058f34433acb63341252702";
 
   const handleSearch = async () => {
     if (!searchCity.trim()) return;
@@ -56,6 +56,10 @@ export default function Home() {
     }
   };
 
+  const removeCard = (index: number) => {
+    setWeatherCards(prev => prev.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="flex justify-center items-center w-full py-10">
@@ -77,7 +81,11 @@ export default function Home() {
 
       <div className="flex flex-wrap gap-4">
         {weatherCards.map((data, index) => (
-          <Card key={`${data.location.name}-${index}`} weatherData={data} />
+          <Card 
+          key={`${data.location.name}-${index}`}
+          weatherData={data} 
+          onRemove={() => removeCard(index)}
+          />
         ))}
       </div>
     </div>

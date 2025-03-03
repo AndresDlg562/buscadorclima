@@ -16,11 +16,18 @@ interface CardProps {
       wind_kph: number;
     };
   };
+  onRemove: () => void;
 }
 
-const Card = ({ weatherData }: CardProps) => {
+const Card = ({ weatherData, onRemove }: CardProps) => {
   return (
     <div className="bg-white rounded-lg p-5 shadow-md w-[300px] m-5">
+      <button
+       onClick={onRemove}
+       className="text-red-500 p-2 rounded-md float-right"
+       >
+        X
+       </button>
       <h2 className="text-xl font-semibold mb-4">{weatherData.location.name}, {weatherData.location.country}</h2>
       <div>
         <img 
