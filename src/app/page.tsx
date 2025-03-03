@@ -22,7 +22,7 @@ export default function Home() {
   const [searchCity, setSearchCity] = useState("");
   const [weatherCards, setWeatherCards] = useState<WeatherData[]>([]);
   const [error, setError] = useState("");
-  const apiKey = "47dfaef058f34433acb63341252702";
+  const apiKey = "";
 
   const handleSearch = async () => {
     if (!searchCity.trim()) return;
